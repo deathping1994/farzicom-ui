@@ -3,6 +3,6 @@ import * as S from "./style";
 
 export default function ({ title }: {title: string}) {
     return (
-        <S.Button className="UI-Button">this is the title-{title}</S.Button>
+        <S.Button className="UI-Button">{title}</S.Button>
     )
 }

@@ -7,7 +7,8 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         filename: "index.js",
         libraryTarget: "umd",
-        library: "ui-lib"
+        library: "farzicom-ui",
+        globalObject: 'this',
     },
     module: {
         rules: [

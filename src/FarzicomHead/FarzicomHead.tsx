@@ -17,6 +17,7 @@ const FarzicomHead: React.FC<IFarzicomHeadProps> = ({
   shopMeta,
 
 }) => {
+  console.log("FarzicomHead")
   const facebookIdContent =
     shopMeta &&
     getMetadataValue(shopMeta, "facebookPixel_id") &&
@@ -79,7 +80,9 @@ const FarzicomHead: React.FC<IFarzicomHeadProps> = ({
 
   return (
     <>
+    {console.log("farzicomHead outside head")}
       <Head>
+      {console.log("farzicomHead inside head")}
         {useGTM && getId(gtmIdContent) ? (
           <>
             <script

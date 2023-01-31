@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "tsc": "tsc",
-    "build": "npm run tsc",
-    "postinstall": "npm run tsc",
+    "build": "tsc",
+    "prepare": "npm run build",
     "lint": "eslint . --ext .ts"
   },
   "devDependencies": {

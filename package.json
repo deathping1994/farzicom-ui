@@ -9,6 +9,11 @@
     "prepare": "npm run build",
     "lint": "eslint . --ext .ts"
   },
+  "husky":{
+    "hooks":{
+      "post-commit":"npm run build"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
@@ -21,6 +26,7 @@
     "css-loader": "^5.0.1",
     "eslint": "^8.33.0",
     "eslint-plugin-tsdoc": "^0.2.17",
+    "husky": "^8.0.3",
     "style-loader": "^2.0.0",
     "styled-components": "^5.3.6",
     "ts-loader": "^8.0.14",

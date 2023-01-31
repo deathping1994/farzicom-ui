@@ -6,12 +6,11 @@
   "scripts": {
     "tsc": "tsc",
     "build": "tsc",
-    "prepare": "npm run build",
     "lint": "eslint . --ext .ts"
   },
-  "husky":{
-    "hooks":{
-      "post-commit":"npm run build"
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run build && git add lib/* && git commit -m 'build-lib'"
     }
   },
   "devDependencies": {
@@ -26,7 +25,7 @@
     "css-loader": "^5.0.1",
     "eslint": "^8.33.0",
     "eslint-plugin-tsdoc": "^0.2.17",
-    "husky": "^8.0.3",
+    "husky": "^4.3.8",
     "style-loader": "^2.0.0",
     "styled-components": "^5.3.6",
     "ts-loader": "^8.0.14",

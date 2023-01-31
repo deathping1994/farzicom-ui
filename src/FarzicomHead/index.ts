@@ -1,3 +1,3 @@
 import FarzicomHead from "./FarzicomHead";
 
-export { FarzicomHead };
+export default FarzicomHead;

@@ -1,7 +1,7 @@
 {
   "name": "farzicom-ui",
   "version": "1.0.0",
-  "main": "dist",
+  "main": "lib",
   "license": "MIT",
   "scripts": {
     "tsc": "tsc",
@@ -29,6 +29,6 @@
     "react-dom": "*"
   },
   "files": [
-    "dist"
+    "lib"
   ]
 }

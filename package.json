@@ -4,15 +4,14 @@
   "main": "dist",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
     "tsc": "tsc",
-    "prepare": "npm run tsc"
+    "build": "npm run tsc"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
-    "@types/react": "^17.0.0",
+    "@types/react": "^17.0.53",
     "@types/styled-components": "^5.1.26",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",

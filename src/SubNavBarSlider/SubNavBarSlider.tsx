@@ -32,14 +32,16 @@ export const SubNavBarSlider: React.FC<ISubNavBarSliderProps> = ({
         >
           {sliderData?.map((navItems: sliderDataInterface) => (
             <S.SubNavlist>
-              <Link href={navItems?.navigation || "/"}>
-                <Image
-                  src={navItems?.image || ""}
-                  alt={navItems?.alt}
-                  height={navItems?.imageDimensions?.height}
-                  width={navItems?.imageDimensions?.width}
-                  className={`${sliderClass}__image`}
-                />
+              <Link href={navItems?.navigation || "/"} legacyBehavior>
+                <a>
+                  <Image
+                    src={navItems?.image || ""}
+                    alt={navItems?.alt}
+                    height={navItems?.imageDimensions?.height}
+                    width={navItems?.imageDimensions?.width}
+                    className={`${sliderClass}__image`}
+                  />
+                </a>
               </Link>
               <p className={`${sliderClass}__title`}>{navItems?.title}</p>
             </S.SubNavlist>

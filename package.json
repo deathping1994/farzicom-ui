@@ -13,6 +13,12 @@
       "pre-push": "npm run build && git add lib/* && git commit -m 'build-lib'"
     }
   },
+  "dependencies": {
+    "@fingerprintjs/fingerprintjs": "^3.4.0",
+    "@types/js-cookie": "^3.0.3",
+    "js-cookie": "^3.0.1",
+    "query-string": "^6.12.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
@@ -26,6 +32,7 @@
     "eslint": "^8.33.0",
     "eslint-plugin-tsdoc": "^0.2.17",
     "husky": "^4.3.8",
+    "next": "*",
     "style-loader": "^2.0.0",
     "styled-components": "^5.3.6",
     "ts-loader": "^8.0.14",

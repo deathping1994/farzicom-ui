@@ -13,8 +13,8 @@ interface sliderDataInterface {
   title?: string;
   navigation?: string;
   imageDimensions?: {
-    height: string;
-    width: string;
+    height?: any;
+    width?: any;
   };
   alt?: string;
 }
@@ -36,9 +36,9 @@ export const SubNavBarSlider: React.FC<ISubNavBarSliderProps> = ({
                 <a>
                   <Image
                     src={navItems?.image || ""}
-                    alt={navItems?.alt}
-                    height={navItems?.imageDimensions?.height}
-                    width={navItems?.imageDimensions?.width}
+                    alt={navItems?.alt || ""}
+                    height={navItems?.imageDimensions?.height || ""}
+                    width={navItems?.imageDimensions?.width || ""}
                     className={`${sliderClass}__image`}
                   />
                 </a>

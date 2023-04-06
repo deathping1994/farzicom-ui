@@ -55,13 +55,14 @@ export const pageViewTrack = async (
 
   fetch("https://t.farziengineer.co/collect", {
     method: "POST",
+    credentials: 'include',
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
       pu: previousURL,
       cu: routerAsPath,
-      ui: visitorId,
+      bi: visitorId,
       ci: FC_TRACKING?.client_id,
       ua: window.navigator.userAgent,
       uip: ip,

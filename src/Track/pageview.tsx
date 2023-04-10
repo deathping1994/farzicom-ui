@@ -55,7 +55,7 @@ export const pageViewTrack = async (
 
   fetch(FC_TRACKING?.api_uri || "https://t.farziengineer.co/collect", {
     method: "POST",
-    credentials: 'include',
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
@@ -63,13 +63,25 @@ export const pageViewTrack = async (
       pu: previousURL,
       cu: routerAsPath,
       bi: visitorId,
+      ui: Cookies.get("user_id"),
       ci: FC_TRACKING?.client_id,
       ua: window.navigator.userAgent,
       uip: ip,
       utm: utm,
     }),
-  }).catch((err) => {
-    console.log("t.farziengineer.co/collect error:", err);
-  });
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((res) => {
+      if (res?.data?.ui) {
+        Cookies.set("user_id", res?.data?.ui, {
+          expires: 365 * 24 * 60 * 60 * 1000,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log("t.farziengineer.co/collect error:", err);
+    });
   previousURL = routerAsPath;
 };

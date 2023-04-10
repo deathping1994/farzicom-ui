@@ -53,7 +53,7 @@ export const pageViewTrack = async (
     getMetadataValue(shopMetaData, "fc_session_tracking") &&
     parseJson(getMetadataValue(shopMetaData, "fc_session_tracking"));
 
-  fetch("https://t.farziengineer.co/collect", {
+  fetch(FC_TRACKING?.api_uri || "https://t.farziengineer.co/collect", {
     method: "POST",
     credentials: 'include',
     headers: {

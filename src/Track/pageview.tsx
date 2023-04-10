@@ -53,6 +53,13 @@ export const pageViewTrack = async (
     getMetadataValue(shopMetaData, "fc_session_tracking") &&
     parseJson(getMetadataValue(shopMetaData, "fc_session_tracking"));
 
+  try {
+    var clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  } catch (err) {
+    var clientTimeZone = "Asia/Calcutta";
+    console.log("TimeZone error", err);
+  }
+
   fetch(FC_TRACKING?.api_uri || "https://t.farziengineer.co/collect", {
     method: "POST",
     credentials: "include",
@@ -68,6 +75,7 @@ export const pageViewTrack = async (
       ua: window.navigator.userAgent,
       uip: ip,
       utm: utm,
+      tz: clientTimeZone,
     }),
   })
     .then((response) => {

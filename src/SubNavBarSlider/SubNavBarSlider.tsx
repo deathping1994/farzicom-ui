@@ -30,7 +30,7 @@ export const SubNavBarSlider: React.FC<ISubNavBarSliderProps> = ({
           className={`${sliderClass}__lists`}
           repeat={sliderData.length}
         >
-          {sliderData?.map((navItems: sliderDataInterface) => (
+          {sliderData?.map((navItems: sliderDataInterface, index: number) => (
             <S.SubNavlist>
               <Link href={navItems?.navigation || "/"} legacyBehavior>
                 <a>
@@ -40,6 +40,7 @@ export const SubNavBarSlider: React.FC<ISubNavBarSliderProps> = ({
                     height={navItems?.imageDimensions?.height || ""}
                     width={navItems?.imageDimensions?.width || ""}
                     className={`${sliderClass}__image`}
+                    priority={index < 4}
                   />
                 </a>
               </Link>

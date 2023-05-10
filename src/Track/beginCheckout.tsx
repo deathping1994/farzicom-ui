@@ -3,16 +3,18 @@ import Cookies from "js-cookie";
 import queryString from "query-string";
 import { getMetadataValue, parseJson } from "../utils";
 
+interface CheckoutItem {
+  item_id: string | number;
+  item_name: string;
+  currency: string;
+  price: string | number;
+  quantity: string | number;
+}
+
 interface BeginCheckoutProps {
   cart_amount: number;
   currency: string;
-  items: {
-    item_id: string | number;
-    item_name: string;
-    currency: string;
-    price: string | number;
-    quantity: string | number;
-  };
+  items: CheckoutItem[];
 }
 
 export const beginCheckout = async (

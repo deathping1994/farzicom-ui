@@ -6,6 +6,7 @@ import { getMetadataValue, parseJson } from "../utils";
 interface CheckoutItem {
   item_id: string | number;
   item_name: string;
+  variant: string;
   currency: string;
   price: string | number;
   quantity: string | number;

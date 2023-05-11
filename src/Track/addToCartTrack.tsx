@@ -1,6 +1,4 @@
-import FingerprintJS from "@fingerprintjs/fingerprintjs";
 import Cookies from "js-cookie";
-import queryString from "query-string";
 import { getMetadataValue, parseJson } from "../utils";
 
 interface addToCartTrackProps {
@@ -23,45 +21,6 @@ export const addToCartTrack = async (
     variant,
   }: addToCartTrackProps
 ) => {
-  let visitorId, ip, utm;
-
-  if (Cookies.get("fctrack_visitor_id")) {
-    visitorId = Cookies.get("fctrack_visitor_id");
-  } else {
-    const fp = await FingerprintJS.load();
-    const visitorProps = await fp.get();
-    visitorId = visitorProps?.visitorId;
-    Cookies.set("fctrack_visitor_id", visitorId);
-  }
-
-  if (sessionStorage.getItem("ip")) {
-    ip = sessionStorage.getItem("ip");
-  } else {
-    try {
-      const res = await fetch("https://qc.brimo.in/ip");
-      const data = await res.json();
-      ip = data?.ip;
-      sessionStorage.setItem("ip", data?.ip);
-    } catch (err) {
-      console.log("err", err);
-    }
-  }
-
-  if (Cookies.get("fctrack")) {
-    utm = Cookies.get("fctrack");
-  } else {
-    const queryValue = queryString.parse(window.location.search);
-    if (
-      queryValue?.utm_source ||
-      queryValue?.utm_medium ||
-      queryValue?.utm_campaign
-    ) {
-      utm = `us=${queryValue?.utm_source}; um=${queryValue?.utm_medium}; uc=${queryValue?.utm_campaign}`;
-    } else {
-      utm = "";
-    }
-  }
-
   const FC_TRACKING =
     shopMetaData &&
     getMetadataValue(shopMetaData, "fc_session_tracking") &&
@@ -69,7 +28,7 @@ export const addToCartTrack = async (
 
   fetch(
     `${
-      FC_TRACKING?.api_uri || "https://t.farziengineer.co/collect"
+      FC_TRACKING?.api_uri || "https://tr.farziengineer.co/collect"
     }/?evt_type=AddToCart`,
     {
       method: "POST",
@@ -100,6 +59,6 @@ export const addToCartTrack = async (
       }
     })
     .catch((err) => {
-      console.log("t.farziengineer.co/collect error:", err);
+      console.log("tr.farziengineer.co/collect error:", err);
     });
 };

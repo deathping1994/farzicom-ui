@@ -10,15 +10,25 @@ interface CheckoutItem {
   quantity: string | number;
 }
 
-interface BeginCheckoutProps {
-  cart_amount: number;
+interface purchaseTrackProps {
+  transaction_id: string | number;
+  order_amount: string | number;
+  tax: string | number;
+  shipping_charge: string | number;
   currency: string;
   items: CheckoutItem[];
 }
 
-export const beginCheckout = async (
+export const purchaseTrack = async (
   shopMetaData: any,
-  { cart_amount, currency, items }: BeginCheckoutProps
+  {
+    transaction_id,
+    order_amount,
+    tax,
+    shipping_charge,
+    currency,
+    items,
+  }: purchaseTrackProps
 ) => {
   const FC_TRACKING =
     shopMetaData &&
@@ -28,7 +38,7 @@ export const beginCheckout = async (
   fetch(
     `${
       FC_TRACKING?.api_uri || "https://tr.farziengineer.co/collect"
-    }/?evt_type=BeginCheckout`,
+    }/?evt_type=Purchase`,
     {
       method: "POST",
       credentials: "include",
@@ -38,7 +48,10 @@ export const beginCheckout = async (
       body: JSON.stringify({
         ui: Cookies.get("user_id"),
         ci: FC_TRACKING?.client_id,
-        cart_amount,
+        transaction_id,
+        order_amount,
+        tax,
+        shipping_charge,
         currency,
         items,
       }),

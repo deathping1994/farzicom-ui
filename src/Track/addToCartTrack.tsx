@@ -8,6 +8,7 @@ interface addToCartTrackProps {
   product_price: string | number;
   currency: string;
   variant: string;
+  tags?: string;
 }
 
 export const addToCartTrack = async (
@@ -19,6 +20,7 @@ export const addToCartTrack = async (
     product_price,
     currency,
     variant,
+    tags
   }: addToCartTrackProps
 ) => {
   const FC_TRACKING =
@@ -45,6 +47,7 @@ export const addToCartTrack = async (
         product_price,
         currency,
         variant,
+        tags
       }),
     }
   )

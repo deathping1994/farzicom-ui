@@ -17,6 +17,7 @@ interface purchaseTrackProps {
   shipping_charge: string | number;
   currency: string;
   items: CheckoutItem[];
+  tags?: string;
 }
 
 export const purchaseTrack = async (
@@ -28,6 +29,7 @@ export const purchaseTrack = async (
     shipping_charge,
     currency,
     items,
+    tags,
   }: purchaseTrackProps
 ) => {
   const FC_TRACKING =
@@ -54,6 +56,7 @@ export const purchaseTrack = async (
         shipping_charge,
         currency,
         items,
+        tags
       }),
     }
   )

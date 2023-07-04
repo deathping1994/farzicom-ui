@@ -7,7 +7,8 @@ let previousURL: String | null = "";
 
 export const pageViewTrack = async (
   shopMetaData: any,
-  routerAsPath: String | null
+  routerAsPath: String | null,
+  tags?: string
 ) => {
   let visitorId, ip, utm;
 
@@ -76,6 +77,7 @@ export const pageViewTrack = async (
       uip: ip,
       utm: utm,
       tz: clientTimeZone,
+      tags: tags
     }),
   })
     .then((response) => {

@@ -14,11 +14,12 @@ interface BeginCheckoutProps {
   cart_amount: number;
   currency: string;
   items: CheckoutItem[];
+  tags?: string
 }
 
 export const beginCheckout = async (
   shopMetaData: any,
-  { cart_amount, currency, items }: BeginCheckoutProps
+  { cart_amount, currency, items, tags }: BeginCheckoutProps
 ) => {
   const FC_TRACKING =
     shopMetaData &&
@@ -41,6 +42,7 @@ export const beginCheckout = async (
         cart_amount,
         currency,
         items,
+        tags
       }),
     }
   )

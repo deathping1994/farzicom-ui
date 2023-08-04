@@ -41,7 +41,7 @@ export const pageViewTrack = async (
       ip = sessionStorage.getItem("ip");
     } else {
       try {
-        const res = await fetch("https://qc.brimo.in/ip");
+        const res = await fetch("https://tr.farziengineer.co/ip");
         const data = await res.json();
         ip = data?.ip;
         sessionStorage.setItem("ip", data?.ip);
